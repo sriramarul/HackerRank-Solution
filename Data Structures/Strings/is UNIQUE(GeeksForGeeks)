@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+int main(){
+    string g;
+    int flag=0;
+    cin>>g;
+    int arr[256]={0};
+    for(int i=0;i<g.length();i++){
+        arr[g[i]]=arr[g[i]]+1;
+    }
+     for(int i=0;i<256;i++){
+        if(arr[i]>1){
+            flag=1;
+            break;
+        }
+    }
+    if(flag==1){
+        cout<<"false";
+        
+    }else{
+        cout<<"true";
+    }
+    return 0;
+}

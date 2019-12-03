@@ -1,0 +1,29 @@
+// Deletes middle of linked list and returns head of the modified list
+Node* deleteMid(Node *head)
+{   int count=0;
+    Node* temp=head;
+    Node* prev=head;
+    while(temp!=NULL){
+       // cout<<temp->data<<" ";
+        temp=temp->next;
+        count++;
+    }
+    if(count==0){
+        return NULL;
+    }else if(count==1){
+        prev=head;
+        free(prev);
+        return head;
+    }else{
+    int mid=count/2;
+    mid=mid+1;
+    temp=head;
+    for(int i=0;i<mid-1;i++){
+        prev=temp;
+        temp=temp->next;
+    }
+    prev->next=temp->next;
+    free(temp);
+    }
+return head;     
+}

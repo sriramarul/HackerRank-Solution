@@ -1,0 +1,23 @@
+//Solution Function for hackerrank problem MAKING ANAGRAMS
+int makeAnagram(string a, string b) {
+    
+int arr[200],count=0;
+for(int i=0;i<200;i++){
+arr[i]=0;
+}
+for(int i=0;i<a.size();i++){
+    arr[a[i]]++;
+}
+for(int i=0;i<b.size();i++){
+    if(arr[b[i]]==0){
+        count=count+1;
+    }else{
+        arr[b[i]]--;
+    }
+}
+for(int i=0;i<200;i++){
+    count=count+arr[i];
+}
+
+return count;
+}

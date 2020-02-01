@@ -1,0 +1,37 @@
+string twoStrings(string s1, string s2) {
+int a[26]={};
+
+if(s1.size()<s2.size()){
+    for(int i=0;i<s1.size();i++){
+        if (a[(int)(s1[i] - 'a')]==1){
+            continue;
+        }else{
+            a[(int)(s1[i] - 'a')]=1;
+        }
+    }
+    for(int i=0;i<26;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+    for(int i=0;i<s2.size();i++){
+        if (a[(int)(s2[i] - 'a')]==1){
+            return "YES";
+        }
+    }
+    
+}else{
+    for(int i=0;i<s2.size();i++){
+        if (a[(int)(s2[i] - 'a')]==1){
+            continue;
+        }else{
+            a[(int)(s2[i] - 'a')]=1;
+        }
+    }
+    for(int i=0;i<s1.size();i++){
+        if (a[(int)(s1[i] - 'a')]==1){
+            return "YES";
+        }
+    }
+}
+return "NO";
+}

@@ -1,0 +1,22 @@
+void printDuplicates(int a[], int n) {
+    int b[n]={0},flag=0;
+    vector<int> a1;
+    for(int i=0;i<n;i++){
+        a1.push_back(a[i]);
+    }
+    sort(a1.begin(),a1.end());
+    for(int i=0;i<n;i++){
+        if(b[a1[i]]==0){
+            b[a1[i]]=1;
+        }else if(b[a1[i]]==2) {continue;}
+        else{
+            b[a1[i]]=2;
+            flag=1;
+            cout<<a1[i]<<" ";
+        }
+    }
+    if(flag==0){
+        cout<<-1;
+    }
+   
+}

@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr); 
+
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        int m,n;
+        cin>>m>>n;
+        int a[m][n];
+        for(int j=0;j<m;j++){
+            for(int k=0;k<n;k++){
+                cin>>a[j][k];
+            }
+        }
+        int count=0,r=0,c=0,total=m*n;
+        while(true){
+            for(int j=r;j<n;j++){
+                cout<<a[r][j]<<" ";
+                count++;
+            }r++;
+            
+            if(count==total){
+                
+                break;
+            }
+            
+            for(int j=r;j<m;++j){
+                cout<<a[j][n-1]<<" ";
+                
+                count++;
+            }n--;
+           
+            
+            if(count==total){break;}
+            for(int j=n-1;j>=c;j--){
+                cout<<a[m-1][j]<<" ";
+                count++;
+            }m--;
+            
+            if(count==total){break;}
+            for(int j=n-1;j>=r;j--){
+                cout<<a[j][c]<<" ";
+                count++;
+            }
+            c++;
+            
+            
+        }
+    }
+	//code
+	return 0;
+}

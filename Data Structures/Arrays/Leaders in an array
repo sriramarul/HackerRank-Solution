@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+   cout.tie(nullptr);
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        int n;
+        stack <int> s; 
+        cin>>n;
+        int a[n];
+        for(int j=0;j<n;j++){
+            cin>>a[j];
+            /*if(j==n-1){
+                break;
+            }*/
+            if(s.empty()){
+                s.push(a[j]);
+            }else{
+                int x=s.top();
+                if(x<a[j]){
+                    while(x<a[j])
+                    {s.pop();
+                    if(s.empty()){
+                        break;
+                    }else{
+                        x=s.top();
+                    }
+                    }
+                    s.push(a[j]);
+                }else{
+                    s.push(a[j]);
+                }
+            }
+        }
+        vector<int> b;
+        while (!s.empty()) 
+    { 
+        int x=s.top();
+        b.push_back(x);
+        s.pop(); 
+    } 
+    for(int j=b.size()-1;j>=0;j--){
+        cout<<b[j]<<" ";
+    }
+        cout<<"\n";
+        
+    }
+	return 0;
+}

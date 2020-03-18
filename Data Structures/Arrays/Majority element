@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        int n;
+        cin>>n;
+        int a[n]={0};
+        unordered_map<int, int> umap; 
+        for(int j=0;j<n;j++){
+            int b;
+            cin>>b;
+            umap[b]++;
+        }
+        int flag=0;
+        
+          for (auto x : umap) 
+          if(x.second>n/2)
+            {cout << x.first; flag=1;}
+     
+        if(flag==0){
+            cout<<-1;
+        }
+        cout<<endl;
+    }
+	//code
+	return 0;
+}

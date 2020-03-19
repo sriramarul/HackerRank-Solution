@@ -1,0 +1,42 @@
+#include <bits/stdc++.h> 
+using namespace std;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    int T;
+    cin>>T;
+    for(int i=0;i<T;i++){
+        int N,count=0;
+        cin>>N;
+        vector<int> a;
+        for(int j=0;j<N;j++){
+        int b;
+        cin>>b;
+        a.push_back(b);}
+        sort(a.begin(),a.end());
+        for(int j=N-1;j>=0;j--){
+            int l=0;
+            int r=j-1;
+            while(l<r){
+              
+                if((a[l]+a[r])==a[j]){
+                    count++;
+                    l++;
+                    r--;
+                
+                }else if((a[l]+a[r])>a[j]){
+                    r--;
+                }else{l++;}
+            }
+        }
+        if(count==0){
+            cout<<-1<<"\n";
+        }else{
+        cout<<count<<"\n";
+        }
+            
+        }
+    
+	return 0;
+}

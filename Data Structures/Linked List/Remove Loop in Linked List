@@ -1,0 +1,54 @@
+void removeTheLoop(Node *head)
+{
+     Node* fast=head;
+    Node* slow=head;
+    Node* slow2=head;
+    Node* p1=head;
+    Node* p2;
+    int flag=0;
+    while(slow!=NULL && fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+       if(slow==fast){
+           flag=1;
+           p2=slow;
+           break;
+       }
+   }
+   if(flag==0){
+       return;
+   }
+   if(slow==NULL || fast==NULL){
+       return;
+   }
+  while(slow2->next!=slow && slow2!=NULL){
+       slow2=slow2->next;
+   }
+   if(slow!=NULL && fast!=NULL){
+      while(true){
+          if(p1==slow){
+              Node* temp5=head;
+              int countt=0;
+              while(countt<=1){
+                  if(temp5->next==p1){
+                      countt++;
+                  }
+                  if(countt>1){break;}
+                  temp5=temp5->next;
+              }
+              temp5->next=NULL;
+              return;
+          }
+         if(p1==slow2->next){
+             slow2->next=NULL;
+             return;
+         }else{
+             p1=p1->next;
+             slow2=slow2->next;
+         }
+       }
+   }
+  else{
+    return;
+  }
+}

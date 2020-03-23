@@ -1,0 +1,31 @@
+void MyQueue:: push(int x)
+{
+    QueueNode* temp=new QueueNode(x);
+    if(front==NULL){
+        front=temp;
+        rear=temp;
+      
+        temp->next=NULL;
+        rear->next=NULL;
+    }else{
+        front->next=temp;
+        front=temp;
+    }
+    
+}
+int MyQueue :: pop()
+{   QueueNode* temp;
+    if(rear==NULL)
+    {return -1;}
+
+    int a=rear->data;
+    temp=rear;
+    if(rear==front){
+        rear=NULL;
+        front=NULL;
+    }
+    else{
+    rear=rear->next;
+    }
+    return a;
+}

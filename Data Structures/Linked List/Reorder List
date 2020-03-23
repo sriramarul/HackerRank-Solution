@@ -1,0 +1,19 @@
+void reorderList(Node* head) {
+    vector<int> a;
+    Node* temp=head;
+    while(temp){
+        a.push_back(temp->data);
+        temp=temp->next;
+    }
+    int i=0,j=a.size()-1;
+    temp=head;
+    while(temp){
+        temp->data=a[i++];
+        temp=temp->next;
+        if(temp!=NULL){
+            temp->data=a[j--];
+            temp=temp->next;
+        }
+    }
+    
+}

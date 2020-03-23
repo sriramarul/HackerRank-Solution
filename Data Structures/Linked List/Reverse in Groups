@@ -1,0 +1,27 @@
+struct node *reverse (struct node *head, int k)
+{ 
+    node* temp=head;
+    node* temp2=head;
+    vector<int> a;
+    int i=0,count=0;
+    while(temp){
+        a.push_back(temp->data);
+        count++;
+        if(count>k-1){
+            int b=a.size()-1;
+            while(count>0){
+                temp2->data=a[b];
+                b--;count--;
+                temp2=temp2->next;
+            }
+        }
+        temp=temp->next;
+    }
+    int c=a.size()-1;
+    while(count>0){
+        temp2->data=a[c];
+        c--;count--;
+        temp2=temp2->next;
+    }
+    return head;
+}

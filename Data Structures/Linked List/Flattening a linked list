@@ -1,0 +1,27 @@
+Node *flatten(Node *root)
+{vector<int> a;
+Node* temp=root;
+while(temp){
+Node* temp2;
+a.push_back(temp->data);
+temp2=temp->bottom;
+while(temp2){
+    a.push_back(temp2->data);
+    temp2=temp2->bottom;
+}
+temp=temp->next;
+}
+sort(a.begin(),a.end());
+temp=root;
+int i=0;
+temp->data=a[i++];
+while(i<a.size()){
+       struct Node* temp2 = (struct Node*) malloc(sizeof(struct Node)); 
+        temp2->data=a[i];
+        temp2->bottom=NULL;
+        temp->bottom=temp2;
+        temp=temp->bottom;
+        i++;
+}
+return root;
+}

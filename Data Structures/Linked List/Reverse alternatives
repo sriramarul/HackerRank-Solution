@@ -1,0 +1,34 @@
+void rearrange(struct Node *odd)
+{
+    Node* temp=odd;
+    int count=1;
+    vector<int> a,b;
+    while(temp){
+        
+    if(count%2==0){
+    
+        b.push_back(temp->data);
+        temp=temp->next;
+    }else{
+        
+        a.push_back(temp->data);
+        temp=temp->next;
+    }
+    
+    count++;
+    
+    }
+    temp=odd;
+
+    for(int i=0;i<a.size();i++){
+        temp->data=a[i];
+        temp=temp->next;
+    }
+    
+    for(int j=b.size()-1;j>=0;j--){
+         temp->data=b[j];
+        temp=temp->next;
+    }
+    temp=NULL;
+ 
+}

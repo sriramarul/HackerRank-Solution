@@ -1,0 +1,30 @@
+/* The method push to push element into the stack */
+void QueueStack :: push(int x)
+{
+        q1.push(x);
+}
+
+/*The method pop which return the element poped out of the stack*/
+int QueueStack :: pop()
+{       int result;
+           if(q1.empty()){
+               return -1;
+           }else{
+               result=q1.back();
+               while(!q1.empty()){
+                   int y=q1.front();
+                   q1.pop();
+                   if(q1.empty()){
+                       break;
+                   }
+                   q2.push(y);
+               }
+               while(!q2.empty()){
+                   int y=q2.front();
+                   q1.push(y);
+                   q2.pop();
+               }
+               return result;
+               
+           }
+}

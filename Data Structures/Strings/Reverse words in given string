@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        string s;
+        cin>>s;
+        s=s+".";
+        string b;
+        stack<string> a;
+        for(int j=0;j<s.length();j++){
+            
+            if(s[j]=='.'){
+                if(a.empty()){
+                    a.push(b);
+                }else{
+                a.push(b+".");}
+                b="";
+                continue;
+            }else{
+                b=b+s[j];
+            }
+        }
+        while(!a.empty()){
+            cout<<a.top();
+            a.pop();
+        }
+        cout<<endl;
+        
+    }
+	return 0;
+}

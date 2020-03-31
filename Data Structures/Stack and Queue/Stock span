@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        int n;
+        cin>>n;
+        int a[n];
+        stack<pair<int,int>> s;
+        for(int j=0;j<n;j++){
+            cin>>a[j];
+        }
+        
+        for(int j=0;j<n;j++){
+            int count=1;
+            if(s.empty()){
+                s.push(make_pair(a[j],1));
+                cout<<1<<" ";
+                continue;
+            }else{
+                if(s.top().first>a[j]){
+                    s.push(make_pair(a[j],1));
+                    cout<<1<<" ";
+                    continue;
+                }else{
+                while(!s.empty()){
+                    if(s.top().first>a[j]){
+                        s.push(make_pair(a[j],count));
+                        cout<<s.top().second<<" ";
+                        break;
+                    }else{
+                        count=count+s.top().second;
+                        s.pop();
+                    }
+                }
+                if(s.empty()){
+                    s.push(make_pair(a[j],count));
+                    cout<<s.top().second<<" ";
+                }
+                }
+            }
+        }
+        cout<<endl;
+    }
+	return 0;
+}

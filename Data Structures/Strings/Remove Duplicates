@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n;
+    cin>>n;
+     cin.ignore();
+    for(int i=0;i<n;i++){
+        string s;
+        getline(cin, s); 
+        int a[27]={0};
+        for(int j=0;j<s.length();j++){
+            if(a[s[j]-'a']==0){
+                cout<<s[j];
+                a[s[j]-'a']++;
+            }
+            if(s[j]==' ' && a[26]==0){
+                cout<<" ";
+                a[26]=1;
+            }
+        }
+        cout<<endl;
+    }
+	return 0;
+}

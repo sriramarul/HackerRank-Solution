@@ -1,0 +1,8 @@
+int countLeaves(Node* root)
+{if(root->left==NULL && root->right==NULL){
+    return 1;
+}
+int leftnode=countLeaves(root->left);
+int rightnode=countLeaves(root->right);
+return leftnode+rightnode; 
+}

@@ -1,0 +1,25 @@
+void reversePrint(Node *root)
+{
+    stack<int> s;    
+    queue<Node*> q;
+    q.push(root);
+        while(!q.empty()){
+                Node* topq=q.front();
+                s.push(topq->data);
+                q.pop();
+                    if(topq->right!=NULL)
+                    {
+                        q.push(topq->right);
+                    }
+                    if(topq->left!=NULL)
+                    {
+                        q.push(topq->left);
+                    }
+                        }
+    while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+
+}

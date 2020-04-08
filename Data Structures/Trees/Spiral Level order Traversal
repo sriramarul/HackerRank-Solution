@@ -1,0 +1,52 @@
+void printSpiral(Node *root)
+{stack<int> s;
+queue<Node*> q;
+q.push(root);
+int count=0;
+int i=0, flag=0,flag3=1;
+if(root!=NULL){cout<<root->data<<" ";}
+int power=pow(2,i);
+while(!q.empty()){
+if(q.front()==NULL){
+        flag=flag+1;
+        q.pop();
+        count++;
+            if((count)==power && !q.empty()){
+                flag=flag*2;count=flag;
+                flag3++;
+                power=pow(2,++i);
+                }
+        continue;
+    }
+    Node* topq=q.front();
+    q.pop();
+    count++;
+    if(flag3%2==0){
+            cout<<topq->data<<" ";}
+        else {
+            while(!s.empty()){
+                cout<<s.top()<<" ";
+                s.pop();
+                            }
+            }
+    if(topq->left!=NULL){
+        q.push(topq->left);
+        if(flag3%2==0){
+            s.push(topq->left->data);
+                    }
+    }else{
+        q.push(NULL);
+    }
+    if(topq->right!=NULL){
+        q.push(topq->right);
+         if(flag3%2==0){
+            s.push(topq->right->data);
+        }
+    }else{q.push(NULL);}
+    if((count)==power && !q.empty()){
+         flag=flag*2;count=flag;
+         flag3++;
+        power=pow(2,++i);
+    }
+}
+}

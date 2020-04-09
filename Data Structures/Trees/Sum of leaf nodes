@@ -1,0 +1,12 @@
+int sumLeaf(Node* root)
+{if(root==NULL){
+    return 0;
+}
+    if(root->left==NULL && root->right==NULL){
+    return root->data;
+}
+int leftnode=sumLeaf(root->left);
+int rightnode=sumLeaf(root->right);
+return leftnode+rightnode; 
+
+}

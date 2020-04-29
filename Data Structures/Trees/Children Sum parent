@@ -1,0 +1,27 @@
+int isSumProperty(Node *node)
+{
+    queue<Node*> q;
+    q.push(node);
+    while(!q.empty()){
+    int sum=0;
+    Node* topq=q.front();
+    q.pop();
+    if(topq->left!=NULL){
+        q.push(topq->left);
+        sum=topq->left->data+sum;
+    }else{
+        sum=sum+0;
+    }
+    if(topq->right!=NULL){
+        q.push(topq->right);
+        sum=topq->right->data+sum;
+    }else{
+        sum=sum+0;
+    }
+    if(topq->left!=NULL || topq->right!=NULL)
+    if(sum!=topq->data){
+        return 0;
+    }
+    }
+return 1;
+}

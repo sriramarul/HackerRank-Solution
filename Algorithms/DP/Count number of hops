@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int fun(int n);
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        int n;
+        cin>>n;
+        int result = fun(n);
+        cout<<result<<"\n";
+    }
+	return 0;
+}
+int fun(int n){
+    if(n==1 || n==2)
+    return n;
+    if(n==3)
+    return 4;
+    return fun(n-1)+fun(n-2)+fun(n-3);    
+}

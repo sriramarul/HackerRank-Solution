@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	for(int k=0;k<t;k++){
+	    int n,Tw;
+	    cin>>n;
+	    cin>>Tw;
+	    vector<vector<int>> T;
+	    int value[n],weight[n];
+	    for(int i=0;i<n;i++){
+	        cin>>value[i];
+	    }
+	    int flag=0;
+	    for(int i=0;i<n;i++){
+	        cin>>weight[i];
+	        if(weight[i]<=Tw){
+	            flag=1;
+	        }
+	    }
+	    if(flag==0){
+	        cout<<0<<"\n";
+	    }else{
+	        for(int i=0;i<n;i++){
+	        vector<int> v1;
+	            v1.push_back(weight[i]);
+	            v1.push_back(value[i]);
+	        T.push_back(v1);
+	    }
+	    sort(T.begin(),T.end());
+	    int K[n][Tw+1]={0};
+	    for(int i=0;i<n;i++){
+	        K[i][0]=0;
+	    }
+	    for(int i=1;i<Tw+1;i++){
+	        if(T[0][0]<=i){
+	            K[0][i]=T[0][1];
+	        }
+	    }
+	    for(int i=1;i<n;i++){
+	        for(int j=1;j<Tw+1;j++){
+	            if(T[i][0]>j){
+	                K[i][j]=K[i-1][j];
+	            }else{
+	                K[i][j]=max(K[i-1][j],T[i][1]+K[i-1][j-T[i][0]]);
+	            }
+	        }
+	    }
+	    for(int i=0;i<n;i++){
+	        for(int j=0;j<Tw+1;j++){
+	            cout<<K[i][j]<<" ";
+	        }
+	        cout<<"\n";
+	    }
+	    cout<<K[n-1][Tw]<<"\n";
+	    }  
+	}
+	return 0;
+}

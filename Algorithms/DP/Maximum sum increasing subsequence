@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	for(int k=0;k<t;k++){
+	    int n;
+	    cin>>n;
+	    int T[n],DP[n];
+	    for(int i=0;i<n;i++){
+	        cin>>T[i];
+	    }
+	    for(int i=0;i<n;i++){
+	        DP[i]=T[i];
+	    }
+	    for(int i=0;i<n;i++){
+	        for(int j=0;j<i;j++){
+	            if(T[j]<T[i]){
+	                if(DP[i]<(T[i]+DP[j]))
+	                DP[i]=T[i]+DP[j];
+	            }
+	        }
+	    }
+	    int max=0;
+	    for(int i=0;i<n;i++){
+	        if(DP[i]>max){
+	            max=DP[i];
+	        }
+	    }
+	    cout<<max<<"\n";
+	}
+	return 0;
+}

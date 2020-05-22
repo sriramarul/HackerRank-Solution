@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	for(int k=0;k<t;k++){
+	    int n,m;
+	    cin>>n>>m;
+	    int GOLD[n][m];
+	    for(int i=0;i<n;i++){
+	        for(int j=0;j<m;j++){
+	            cin>>GOLD[i][j];
+	        }
+	    }
+	    for(int j=m-2;j>=0;j--){
+	        for(int i=n-1;i>=0;i--){
+	            int temp1,temp2;
+	            if(i+1>=n){
+	                temp1=0;
+	            }else{
+	                temp1=GOLD[i+1][j+1];
+	            }
+	            if(i-1<0){
+	                temp2=0;
+	                
+	            }else{
+	                temp2=GOLD[i-1][j+1];
+	            }
+	            GOLD[i][j]=GOLD[i][j]+max(GOLD[i][j+1],max(temp2,temp1));
+	        }
+	    }
+	    int max=0;
+	    for(int i=0;i<n;i++){
+	        if(GOLD[i][0]>max){
+	            max=GOLD[i][0];
+	        }
+	    }
+	    cout<<max<<"\n";
+	    
+	}
+	return 0;
+}

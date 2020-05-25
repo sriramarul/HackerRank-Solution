@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int T;
+    cin>>T;
+    for(int t=0;t<T;t++){
+        int n;
+        cin>>n;
+        int p[n+1];
+        for(int i=1;i<=n;i++){
+            cin>>p[i];
+        }
+        pair<int,int> DP[n+1][n+1];
+        for(int m=1;m<=n;m++){
+            for(int i=1,j=m;i<=n,j<=n;i++,j++){
+                if(i==j){
+                    DP[i][j].first=p[i];
+                    DP[i][j].second=0;
+                }else if(i<j){
+                    if(p[i]+DP[i+1][j].second>p[j]+DP[i][j-1].second){
+                        DP[i][j].first=p[i]+DP[i+1][j].second;
+                        DP[i][j].second=DP[i+1][j].first;
+                    }else{
+                        DP[i][j].first=p[j]+DP[i][j-1].second;
+                        DP[i][j].second=DP[i][j-1].first;
+                    }
+                }else{
+                    DP[i][j].first=0;
+                    DP[i][j].second=0;
+                }
+            }
+        }
+        cout<<DP[1][n].first<<"\n";
+    }
+	return 0;
+}

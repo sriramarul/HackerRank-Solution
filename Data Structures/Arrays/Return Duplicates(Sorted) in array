@@ -1,0 +1,15 @@
+vector<int> duplicates(int a[], int n) {
+    int arr[100000]={0};
+    vector<int> arr2;
+    for(int i=0;i<n;i++){
+        arr[a[i]]++;
+        if(arr[a[i]]==2){
+            arr2.push_back(a[i]);
+        }
+    }
+    if(arr2.size()==0){
+        arr2.push_back(-1);
+    }
+    sort(arr2.begin(),arr2.end());
+    return arr2;
+}
